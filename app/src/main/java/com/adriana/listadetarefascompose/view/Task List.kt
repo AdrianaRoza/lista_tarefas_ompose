@@ -15,7 +15,6 @@ import androidx.navigation.NavController
 import com.adriana.listadetarefascompose.R
 import com.adriana.listadetarefascompose.ui.theme.BLACK
 import com.adriana.listadetarefascompose.ui.theme.Purple200
-import com.adriana.listadetarefascompose.ui.theme.Purple700
 import com.adriana.listadetarefascompose.ui.theme.WHITE
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
