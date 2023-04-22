@@ -1,22 +1,23 @@
 package com.adriana.listadetarefascompose.components
 
-import androidx.compose.foundation.layout.fillMaxWidth
+
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.adriana.listadetarefascompose.ui.theme.BLACK
-import com.adriana.listadetarefascompose.ui.theme.LIGHT_BLUE
-import com.adriana.listadetarefascompose.ui.theme.WHITE
+import androidx.compose.ui.text.input.KeyboardType
+import com.adriana.listadetarefascompose.ui.theme.*
 
 @Composable
 fun TextBox(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier,
-    label: String
+    label: String,
+    maxLines: Int,
+    keyboardType: KeyboardType
 ){
 
     OutlinedTextField(
@@ -26,24 +27,17 @@ fun TextBox(
         label = {
             Text(text = label)
         },
-        maxLines = 1,
+        maxLines = maxLines,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             textColor = BLACK,
-            focusedBorderColor = LIGHT_BLUE,
-            focusedLabelColor = LIGHT_BLUE,
+            focusedBorderColor = Purple200,
+            focusedLabelColor = Purple200,
             backgroundColor = WHITE,
-            cursorColor = LIGHT_BLUE
+            cursorColor = Purple200
+        ),
+        shape = ShapeEditText.small,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType
         )
-    )
-}
-
-@Composable
-@Preview
-private fun TextBoxPreview(){
-    TextBox(
-        value = "Adriana",
-        onValueChange = {},
-        modifier = Modifier.fillMaxWidth(),
-        label = "Descrição"
     )
 }
