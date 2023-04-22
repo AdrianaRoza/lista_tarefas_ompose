@@ -135,6 +135,12 @@ fun SaveList(
 
                 }
 
+            com.adriana.listadetarefascompose.components.Button(
+                onclick = {  },
+                modifier = Modifier.fillMaxWidth().height(80.dp).padding(20.dp),
+                text = "Salvar"
+            )
+
             }
 
         }
