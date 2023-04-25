@@ -2,6 +2,8 @@ package com.adriana.listadetarefascompose.view
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -13,6 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.adriana.listadetarefascompose.R
+import com.adriana.listadetarefascompose.itemlist.TaskItem
+import com.adriana.listadetarefascompose.model.Task
 import com.adriana.listadetarefascompose.ui.theme.BLACK
 import com.adriana.listadetarefascompose.ui.theme.Purple200
 import com.adriana.listadetarefascompose.ui.theme.WHITE
@@ -37,7 +41,7 @@ fun TaskList(
                 }
             )
         },
-        backgroundColor = BLACK,
+        backgroundColor = WHITE,
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -53,5 +57,35 @@ fun TaskList(
         }
         ) {
 
+        val todoList: MutableList<Task> = mutableListOf(
+            Task(
+                task = "Ler",
+                description = "hdjshfahshfajsh",
+                priority = 0
+            ),
+
+            Task(
+                task = "Ir ao cinema",
+                description = "hdjshfahshfajsh",
+                priority = 1
+            ),
+
+            Task(
+                task = "Estudar",
+                description = "hdjshfahshfajsh",
+                priority = 2
+            ),
+
+            Task(
+                task = "Se exercitar",
+                description = "hdjshfahshfajsh",
+                priority = 3
+            )
+        )
+        LazyColumn{
+            itemsIndexed(todoList){position, _ ->
+                TaskItem(position, todoList)
+            }
+        }
     }
 }
