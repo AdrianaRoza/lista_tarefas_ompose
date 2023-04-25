@@ -20,12 +20,15 @@ import com.adriana.listadetarefascompose.model.Task
 import com.adriana.listadetarefascompose.ui.theme.BLACK
 import com.adriana.listadetarefascompose.ui.theme.Purple200
 import com.adriana.listadetarefascompose.ui.theme.WHITE
+import com.google.firebase.ktx.Firebase
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TaskList(
     navController: NavController
 ){
+
+
     Scaffold(
         topBar = {
             TopAppBar(

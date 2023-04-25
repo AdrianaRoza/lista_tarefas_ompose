@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "42929484392",
+    "project_id": "lista-de-tarefas-compose-b4c53",
+    "storage_bucket": "lista-de-tarefas-compose-b4c53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42929484392:android:ad8ad0afbca5019b27c1dd",
+        "android_client_info": {
+          "package_name": "com.adriana.listadetarefascompose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42929484392-j055bpomki4h9kcdf1l35i84tvvrsfcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyBGsVm2efGEQImo6zuTxAd2OamIyRW0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42929484392-j055bpomki4h9kcdf1l35i84tvvrsfcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
