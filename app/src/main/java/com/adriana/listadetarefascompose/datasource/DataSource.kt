@@ -17,6 +17,8 @@ class DataSource {
 
         db.collection("task").document(task).set(taskMap).addOnCompleteListener {
 
-        }.addOnFailureListener {  }
+        }.addOnFailureListener {
+
+        }
     }
 }

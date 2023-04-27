@@ -60,35 +60,9 @@ fun TaskList(
         }
         ) {
 
-        val todoList: MutableList<Task> = mutableListOf(
-            Task(
-                task = "Ler",
-                description = "hdjshfahshfajsh",
-                priority = 0
-            ),
 
-            Task(
-                task = "Ir ao cinema",
-                description = "hdjshfahshfajsh",
-                priority = 1
-            ),
-
-            Task(
-                task = "Estudar",
-                description = "hdjshfahshfajsh",
-                priority = 2
-            ),
-
-            Task(
-                task = "Se exercitar",
-                description = "hdjshfahshfajsh",
-                priority = 3
-            )
-        )
         LazyColumn{
-            itemsIndexed(todoList){position, _ ->
-                TaskItem(position, todoList)
-            }
+
         }
     }
 }
