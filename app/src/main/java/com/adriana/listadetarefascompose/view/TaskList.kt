@@ -9,6 +9,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -16,18 +17,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.adriana.listadetarefascompose.R
 import com.adriana.listadetarefascompose.itemlist.TaskItem
-import com.adriana.listadetarefascompose.model.Task
-import com.adriana.listadetarefascompose.ui.theme.BLACK
+import com.adriana.listadetarefascompose.repository.RepositoryTasks
 import com.adriana.listadetarefascompose.ui.theme.Purple200
 import com.adriana.listadetarefascompose.ui.theme.WHITE
-import com.google.firebase.ktx.Firebase
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun TaskList(
     navController: NavController
 ){
-
+    val taskRepository = RepositoryTasks()
 
     Scaffold(
         topBar = {
@@ -60,9 +59,12 @@ fun TaskList(
         }
         ) {
 
+        val listTasks = taskRepository.recoverTask().collectAsState(mutableListOf()).value
 
         LazyColumn{
-
+            itemsIndexed(listTasks){position, _, ->
+                TaskItem(position = position, listTasks = listTasks)
+            }
         }
     }
 }

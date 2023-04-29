@@ -1,6 +1,5 @@
 package com.adriana.listadetarefascompose.itemlist
 
-import android.renderscript.RenderScript.Priority
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.adriana.listadetarefascompose.R
@@ -21,12 +19,12 @@ import com.adriana.listadetarefascompose.ui.theme.*
 @Composable
 fun TaskItem(
     position: Int,
-    todoList: MutableList<Task>
+    listTasks: MutableList<Task>
 ){
 
-    val titleTask = todoList[position].task
-    val descriptionTask = todoList[position].description
-    val priorityTask = todoList[position].priority
+    val titleTask = listTasks[position].task
+    val descriptionTask = listTasks[position].description
+    val priorityTask = listTasks[position].priority
 
     var priorityLevel: String = when(  priorityTask){
         0 -> {
