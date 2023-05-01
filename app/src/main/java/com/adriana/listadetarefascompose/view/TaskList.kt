@@ -11,6 +11,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -27,6 +28,7 @@ fun TaskList(
     navController: NavController
 ){
     val taskRepository = RepositoryTasks()
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -62,8 +64,12 @@ fun TaskList(
         val listTasks = taskRepository.recoverTask().collectAsState(mutableListOf()).value
 
         LazyColumn{
-            itemsIndexed(listTasks){position, _, ->
-                TaskItem(position = position, listTasks = listTasks)
+            itemsIndexed(listTasks) { position, _, ->
+                TaskItem(
+                    position = position,
+                    listTasks = listTasks,
+                    context = context,
+                    navController = navController)
             }
         }
     }

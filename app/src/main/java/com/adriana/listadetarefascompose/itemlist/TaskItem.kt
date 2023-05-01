@@ -1,32 +1,63 @@
 package com.adriana.listadetarefascompose.itemlist
 
+import android.app.AlertDialog
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import com.adriana.listadetarefascompose.R
 import com.adriana.listadetarefascompose.model.Task
+import com.adriana.listadetarefascompose.repository.RepositoryTasks
 import com.adriana.listadetarefascompose.ui.theme.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun TaskItem(
     position: Int,
-    listTasks: MutableList<Task>
+    listTasks: MutableList<Task>,
+    context: Context,
+    navController: NavController
 ){
 
     val titleTask = listTasks[position].task
     val descriptionTask = listTasks[position].description
     val priorityTask = listTasks[position].priority
 
-    var priorityLevel: String = when(  priorityTask){
+    val scope = rememberCoroutineScope()
+    val repositoryTasks= RepositoryTasks()
+
+    fun dialogDelete(){
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setTitle("Deletar Tarefa")
+            .setMessage("Deseja Excluir a Tarefa?")
+            .setPositiveButton("Sim"){ _, _, ->
+                repositoryTasks.deleteTask(titleTask.toString())
+
+                scope.launch(Dispatchers.Main){
+                    listTasks.removeAt(position)
+                    navController.navigate("TaskList")
+                    Toast.makeText(context,"Sucesso ao Deletar Tarefa!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Não"){ _, _, ->
+            }
+            .show()
+    }
+
+    var priorityLevel: String = when(priorityTask){
         0 -> {
             "Sem prioridade"
         }
@@ -112,6 +143,7 @@ fun TaskItem(
             }
             IconButton(
                 onClick = {
+                    dialogDelete()
 
             },
                 modifier = Modifier.constrainAs(btDelete){

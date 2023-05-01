@@ -45,4 +45,12 @@ class DataSource {
         }
         return allTasks
     }
+
+    fun deleteTask(task: String){
+        db.collection("task").document(task).delete().addOnCompleteListener {
+
+        }.addOnFailureListener {
+
+        }
+    }
 }

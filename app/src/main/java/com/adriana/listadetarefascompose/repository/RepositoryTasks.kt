@@ -13,6 +13,10 @@ class RepositoryTasks{
 
     fun recoverTask():Flow<MutableList<Task>>{
         return dataSource.recoverTasks()
+    }
+
+    fun deleteTask(task: String){
+        dataSource.deleteTask(task)
 
     }
 
